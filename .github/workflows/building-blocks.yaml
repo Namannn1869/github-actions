@@ -2,7 +2,6 @@ name: Building Blocks Demo
 
 on:
   push:
-    workflow_dispatch: # Allows manual trigger from GitHub UI
     branches: [ "main" ]
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
