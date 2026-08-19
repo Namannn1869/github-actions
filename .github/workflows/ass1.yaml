@@ -1,0 +1,65 @@
+name: System Report
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+    system-info:
+        runs-on: ubuntu-latest
+        steps:
+        -   name: Print OS and kernel
+            run: |
+                echo "OS: $(lsb_release -ds)"
+                echo "Kernel: $(uname -r)"
+        
+        -   name: Print free disk space
+            run: |
+                df -h /
+
+        -   name: Print current date and time
+            run: |
+                date
+
+        -   name: Install tree;
+            run: |
+                sudo apt-get update
+                sudo apt-get install -y tree
+
+        -   name: Print home directory tree
+            run: |
+                tree ~ -L 2
+
+    tool-check:
+        runs-on: ubuntu-latest
+        steps:
+        -   name: Install jq
+            run: |
+                sudo apt-get update
+                sudo spt-get install -y jq
+
+        -   name: Create report.json
+            run: |
+                cat > report.json << EOF
+                {
+                    "runner" : "ubuntu-latest"
+                    "project" : "System Report"
+                    "status" : "complete"
+                }
+                EOF
+
+        -   name: Read value using jq
+            run: |
+                jq -r '.status' report.json
+
+        -   name: Print tool versions
+            run: |
+                python3 --version
+                git --version
+                jq --version
+
+        -   name: Finish report
+            run: |
+                echo "Report complete"
+                
+
