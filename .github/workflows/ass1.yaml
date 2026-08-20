@@ -4,6 +4,7 @@ on:
   push:
     branches: [ "main" ]
 
+
 jobs:
     system-info:
         runs-on: ubuntu-latest
@@ -36,14 +37,14 @@ jobs:
         -   name: Install jq
             run: |
                 sudo apt-get update
-                sudo spt-get install -y jq
+                sudo apt-get install -y jq
 
         -   name: Create report.json
             run: |
                 cat > report.json << EOF
                 {
-                    "runner" : "ubuntu-latest"
-                    "project" : "System Report"
+                    "runner" : "ubuntu-latest",
+                    "project" : "System Report",
                     "status" : "complete"
                 }
                 EOF
@@ -61,5 +62,3 @@ jobs:
         -   name: Finish report
             run: |
                 echo "Report complete"
-                
-
