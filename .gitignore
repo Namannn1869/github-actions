@@ -1,4 +1,16 @@
-node_modules #needed
-Demo.pem
-Demo.pem.pub
-terraform.tfstate.backup
+node_modules/
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+*.tfstate
+*.tfstate.*
+
+# SSH keys
+*.pem
+*.pem.pub
+
+# Environment
+.env
+.env.*
