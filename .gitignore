@@ -1,1 +1,4 @@
 node_modules #needed
+Demo.pem
+Demo.pem.pub
+terraform.tfstate.backup
